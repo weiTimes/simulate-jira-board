@@ -1,11 +1,26 @@
 import React, { ReactNode, useState } from "react";
 import { User } from "src/screens/ProjectList/SearchPanel";
+import { useMount } from "src/utils";
+import { http } from "src/utils/http";
 import * as auth from "../auth-provider";
 
 interface AuthForm {
   username: string;
   password: string;
 }
+
+const bootstrapUser = async () => {
+  let user = null;
+
+  const token = auth.getToken();
+
+  if (token) {
+    const data = await http("/me", { token });
+    user = data.user;
+  }
+
+  return user;
+};
 
 const AuthContext = React.createContext<
   | undefined
@@ -26,6 +41,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const register = (form: AuthForm) => auth.register(form).then(setUser);
 
   const logout = () => auth.logout().then(() => setUser(null));
+
+  useMount(() => {
+    bootstrapUser().then(setUser);
+  });
 
   return (
     <AuthContext.Provider
