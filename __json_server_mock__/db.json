@@ -1,0 +1,29 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "王华"
+    },
+    {
+      "id": 2,
+      "name": "叶威"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "name": "骑手管理",
+      "personId": 1
+    },
+    {
+      "id": 2,
+      "name": "外卖管理",
+      "personId": 2
+    },
+    {
+      "id": 3,
+      "name": "宿舍管理",
+      "personId": 3
+    }
+  ]
+}
