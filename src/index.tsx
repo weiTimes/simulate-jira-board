@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { loadDevTools } from "jira-dev-tool";
+import "antd/dist/antd.less"; // 方便后面自定义
 
-import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { AppProviders } from "./context";
