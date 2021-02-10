@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Select } from "antd";
+import { Input, Select, Form } from "antd";
 
 export interface User {
   id: string;
@@ -18,13 +18,15 @@ interface ISearchPanel {
 
 export const SearchPanel = ({ users, params, setParams }: ISearchPanel) => {
   return (
-    <form>
-      <div>
+    <Form layout="inline" style={{ marginBottom: "2rem" }}>
+      <Form.Item>
         <Input
           type="text"
           value={params.name}
           onChange={(evt) => setParams({ ...params, name: evt.target.value })}
         />
+      </Form.Item>
+      <Form.Item>
         <Select
           value={params.personId}
           onChange={(value) => setParams({ ...params, personId: value })}
@@ -36,7 +38,7 @@ export const SearchPanel = ({ users, params, setParams }: ISearchPanel) => {
             </Select.Option>
           ))}
         </Select>
-      </div>
-    </form>
+      </Form.Item>
+    </Form>
   );
 };

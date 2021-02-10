@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const Row = styled.div<{
   gap?: number | boolean;
   justify?: string;
-  marginBottom: number;
+  marginBottom?: number;
 }>`
   display: flex;
   align-items: center;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import qs from "qs";
+import styled from "@emotion/styled";
 
 import { List } from "./List";
 import { SearchPanel } from "./SearchPanel";
@@ -7,6 +7,10 @@ import { cleanObject, useDebounce, useMount } from "src/utils";
 import { useHttp } from "src/utils/http";
 
 const apiUrl = process.env.REACT_APP_API_URL;
+
+const Container = styled.div`
+  padding: 3.2rem;
+`;
 
 export const ProjectListScreen = () => {
   const [users, setUsers] = useState([]);
@@ -27,9 +31,10 @@ export const ProjectListScreen = () => {
   });
 
   return (
-    <div>
+    <Container>
+      <h1>项目列表</h1>
       <SearchPanel users={users} params={params} setParams={setParams} />
       <List users={users} list={list} />
-    </div>
+    </Container>
   );
 };

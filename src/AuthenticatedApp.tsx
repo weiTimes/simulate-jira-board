@@ -1,14 +1,18 @@
 import React from "react";
-import { Button } from "antd";
+import { Button, Dropdown, Menu } from "antd";
 import styled from "@emotion/styled";
 import { useAuth } from "./context/AuthContext";
 import { ProjectListScreen } from "./screens/ProjectList";
 import { Row } from "./style/common";
 
+import { ReactComponent as SoftwareLogo } from "./assets/software_logo.svg";
+
 const Container = styled.div``;
 const Header = styled(Row)`
   height: 6rem;
-  padding: 0 2rem;
+  padding: 3.2rem;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+  z-index: 1;
 `;
 const HeaderLeft = styled(Row)``;
 const HeaderRight = styled.div``;
@@ -19,20 +23,28 @@ const Main = styled.header`
 `;
 
 export const AuthenticatedApp = () => {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   return (
     <Container>
       <Header justify="space-between">
         <HeaderLeft gap>
-          <HeaderItem>Logo</HeaderItem>
+          <SoftwareLogo width="18rem" color="rgba(38,122,155)" />
           <HeaderItem>项目</HeaderItem>
           <HeaderItem>用户</HeaderItem>
         </HeaderLeft>
         <HeaderRight>
-          <Button type="primary" size="large" onClick={logout}>
-            登出
-          </Button>
+          <Dropdown
+            overlay={
+              <Menu>
+                <Menu.Item key="logout">
+                  <a onClick={logout}>登出</a>
+                </Menu.Item>
+              </Menu>
+            }
+          >
+            <a onClick={(e) => e.preventDefault()}>Hi, I'm {user?.name}</a>
+          </Dropdown>
         </HeaderRight>
       </Header>
       <Main>
