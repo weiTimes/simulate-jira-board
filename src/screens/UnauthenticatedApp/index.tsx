@@ -5,8 +5,11 @@ import { LoginScreen } from "./login";
 import { RegisterScreen } from "./register";
 
 import ICON_LOGO from "../../assets/logo.svg";
+import ICON_LEFT from "../../assets/left.svg";
+import ICON_RIGHT from "../../assets/right.svg";
 
 const Container = styled.div`
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,11 +34,26 @@ const Title = styled.div`
   color: rgb(94, 108, 132); ;
 `;
 
+const Background = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-image: url(${ICON_LEFT}), url(${ICON_RIGHT});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: left bottom, right bottom;
+  background-size: calc(((100vw - 40rem) / 2) - 3.2rem),
+    calc(((100vw - 40rem) / 2) - 3.2rem), cover;
+`;
+
 export const UnauthenticatedApp = () => {
   const [isRegister, setIsRegister] = useState(false);
 
   return (
+    // { display: "grid", gridTemplateRow: "6rem calc(100vh - 6rem)" }
     <Container style={{ display: "flex", justifyContent: "center" }}>
+      <Background />
+
       <Header />
       <ShadowCard>
         <Title>{isRegister ? "请登录" : "请注册"}</Title>

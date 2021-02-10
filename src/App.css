@@ -10,7 +10,8 @@ html {
 html,
 body,
 #root,
-.App {
+.App,
+.App-header {
   /* viewport */
   min-height: 100vh;
 }
