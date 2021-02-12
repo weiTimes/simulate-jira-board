@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Button, Divider } from "antd";
+import { Card, Button, Divider, Typography } from "antd";
 import styled from "@emotion/styled";
 import { LoginScreen } from "./login";
 import { RegisterScreen } from "./register";
@@ -48,6 +48,7 @@ const Background = styled.div`
 
 export const UnauthenticatedApp = () => {
   const [isRegister, setIsRegister] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
 
   return (
     // { display: "grid", gridTemplateRow: "6rem calc(100vh - 6rem)" }
@@ -57,7 +58,14 @@ export const UnauthenticatedApp = () => {
       <Header />
       <ShadowCard>
         <Title>{isRegister ? "请登录" : "请注册"}</Title>
-        {isRegister ? <LoginScreen /> : <RegisterScreen />}
+        {error ? (
+          <Typography.Text type="danger">{error.message}</Typography.Text>
+        ) : null}
+        {isRegister ? (
+          <LoginScreen onError={setError} />
+        ) : (
+          <RegisterScreen onError={setError} />
+        )}
         <Divider />
         <Button onClick={() => setIsRegister(!isRegister)}>
           {isRegister ? "没有账号？请注册" : "已经注册账号了？直接登录"}
