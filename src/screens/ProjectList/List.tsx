@@ -2,8 +2,9 @@ import React from "react";
 import { Table } from "antd";
 import dayjs from "dayjs";
 import { User } from "./SearchPanel";
+import { TableProps } from "antd/lib/table";
 
-interface Project {
+export interface Project {
   id: string;
   name: string;
   organization: string;
@@ -11,15 +12,15 @@ interface Project {
   created: number;
 }
 
-interface IListProps {
-  list: Project[];
+interface IListProps extends TableProps<Project> {
   users: User[];
 }
 
-export const List = ({ list, users }: IListProps) => {
+export const List = ({ users, ...props }: IListProps) => {
   return (
     <Table
-      dataSource={list}
+      {...props}
+      rowKey={(row) => row.id}
       columns={[
         { title: "名称", dataIndex: "name" },
         { title: "部门", dataIndex: "organization" },
