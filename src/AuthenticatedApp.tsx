@@ -24,9 +24,11 @@ const Main = styled.header`
 
 export const AuthenticatedApp = () => {
   const { logout, user } = useAuth();
+  const value: any = undefined;
 
   return (
     <Container>
+      {value.val}
       <Header justify="space-between">
         <HeaderLeft gap>
           <SoftwareLogo width="18rem" color="rgba(38,122,155)" />
