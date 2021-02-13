@@ -26,7 +26,7 @@
 
 文档主要是对技术点的记录，可能会不完整，最佳使用方式是作为源码的参考文档。
 
-![image-20210112171511374](http://ypyun.ywhoo.cn/assets/image-20210112171511374.png)
+![image-20210112171511374](https://ypyun.ywhoo.cn/assets/image-20210112171511374.png)
 
 功能：
 
