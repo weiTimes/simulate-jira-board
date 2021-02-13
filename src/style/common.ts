@@ -22,3 +22,10 @@ export const Row = styled.div<{
         : undefined};
   }
 `;
+
+export const FullPage = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
